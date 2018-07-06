@@ -31,7 +31,7 @@ You can acheive the same end without using docker-compose.  I don't know why you
 ```bash
 cd PracticeApp
 docker build -t practiceapp .
-docker run -name mongo -d -p 27017:27017 mongodb:latest
+docker run -name mongo -d -p 27017:27017 mongo:latest
 docker run -name redis -d -p 6379:6379 redis:latest
 docker run -name practiceapp -p 93:8000 -d practiceapp
 ```

@@ -26,4 +26,4 @@ services:
     restart: always
     expose:
       - 27017
-    image: mongodb:latest
+    image: mongo:latest
