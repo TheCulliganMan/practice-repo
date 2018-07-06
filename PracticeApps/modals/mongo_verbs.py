@@ -18,9 +18,11 @@ class HelloMongo(object):
             return result["hello"]
         return ""
 
-    def post(self, value) -> None:
+    def post(self, value) -> str:
         db_hello.remove()  # upsert
         db_hello.insert_one({"hello": value})
+        return ""
 
-    def delete(self) -> None:
+    def delete(self) -> str:
         db_hello.remove()
+        return ""

@@ -17,8 +17,10 @@ class HelloRedis(object):
             return ""
         return str(resp)
 
-    def post(self, value) -> None:
+    def post(self, value) -> str:
         redis.set("hello", value)
+        return ""
 
-    def delete(self) -> None:
-        redis.delete("hello")  # we will just use hello as our key
+    def delete(self) -> str:
+        redis.delete("hello") 
+        return "" # we will just use hello as our key

@@ -25,14 +25,16 @@ hello_redis = HelloRedis()
 hello_mongo = HelloMongo()
 
 
-def mongo_post(data: NoSqlPostValidate) -> None:
+def mongo_post(data: NoSqlPostValidate) -> str:
     valueobj = NoSqlPostValidate(data)
     hello_redis.post(valueobj.value)
+    return ""
 
 
-def redis_post(data: NoSqlPostValidate) -> None:
+def redis_post(data: NoSqlPostValidate) -> str:
     valueobj = NoSqlPostValidate(data)
     hello_redis.post(valueobj.value)
+    return ""
 
 
 routes = [
