@@ -10,7 +10,7 @@ services:
     image: theculliganman:flaskpracticeapp
     # Exposes ports externally, we map 8000 of the container port to 93 on the host.
     ports:
-      - 95:8000
+      - 93:8000
     # link other containers by name onto the containers network
     links:
       - redis:redis
