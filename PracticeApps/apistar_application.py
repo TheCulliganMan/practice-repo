@@ -11,7 +11,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 
-def index(app: App, name=None) -> str:
+def index(app: App) -> str:
     return app.render_template("index.html")
 
 
