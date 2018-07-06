@@ -16,7 +16,7 @@ services:
       - redis:redis
       - mongod:mongod
     # overwrite the default command.
-    command: ["python", "apistar_application.py"]
+    command: ["gunicorn", "apistar_application:app", "-b", ":8000", "-w", "4", "--timeout", "60"]
   redis:
     restart: always
     # expose port internal to the containers network
