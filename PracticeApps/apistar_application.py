@@ -39,8 +39,7 @@ routes = [
     Route('/', 'GET', index),
     Route("/api/v1/redis/helloworld", method="GET", handler=hello_mongo.get),
     Route("/api/v1/redis/helloworld", method="POST", handler=redis_post),
-    Route("/api/v1/redis/helloworld", method="DELETE",
-          handler=hello_mongo.delete),
+    Route("/api/v1/redis/helloworld", method="DELETE", handler=hello_mongo.delete),
     Route("/api/v1/mongo/helloworld", method="GET", handler=hello_mongo.get),
     Route("/api/v1/mongo/helloworld", method="POST", handler=mongo_post),
     Route("/api/v1/mongo/helloworld", method="DELETE", handler=hello_mongo.delete)
