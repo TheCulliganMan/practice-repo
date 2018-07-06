@@ -12,4 +12,4 @@ RUN pip install -r requirements.txt
 COPY . .
 # write the image entrypoint.  This command will run on container start.
 # bind port 8000, 4 workers, 2 second timeout
-CMD ["gunicorn", "PracticeApp:application:app", "-b", "8000:8000", "-w", "4", "--timeout", "2"]
+CMD ["gunicorn", "application:app", "-b", "8000:8000", "-w", "4", "--timeout", "2"]
