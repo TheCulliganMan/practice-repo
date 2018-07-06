@@ -3,8 +3,8 @@ from flask import render_template
 from flask_restful import Api
 from flask_restful import Resource
 from flask_restful import reqparse
-import redis
-from pymongo import MongoClient
+from modals.redis_verbs import HelloRedis
+from modals.mongo_verbs import HelloMongo
 
 app = Flask(__name__)
 api = Api(app)
@@ -14,15 +14,11 @@ api = Api(app)
 #
 
 ### START REDIS API EXAMPLE ###
-redis = redis.StrictRedis(
-    host='redis',  # host is the container name specified in the compose file
-    port=6379,  # port has already been set by default in the redis image
-    decode_responses=True # we don't want bytes back
-)
+hello_redis = HelloRedis()
 class RedisHelloWorldApi(Resource):
     """ Redis Hello World Example """
     def get(self):
-        return redis.get("hello")  # we will just use hello as our key
+        return hello_redis.get() 
     
     def post(self):
         parser = reqparse.RequestParser(bundle_errors=True)
@@ -33,11 +29,11 @@ class RedisHelloWorldApi(Resource):
             required=True
         )
         args = parser.parse_args()
-        redis.set("hello", args["value"])
+        hello_redis.post(args["value"])
         return True
 
     def delete(self):
-        return redis.delete("hello")  # we will just use hello as our key
+        return hello_redis.delete()
 
 api.add_resource(
     RedisHelloWorldApi,  # Restful Class 
@@ -47,20 +43,13 @@ api.add_resource(
 
 ### START MONGO API EXAMPLE ###
 
-mongo_client = MongoClient(
-    'mongod',  # Container name as specified in the compose linkage
-    27017 # Default mongo port defined by the mongodb image
-)
-db = mongo_client.mongo_hello_world_db
-db_hello = db.hello
+
+hello_mongo = HelloMongo()
 class MongoHelloWorldApi(Resource):
     """ Mongo Hello World Example """
 
     def get(self):
-        result = db_hello.find_one() #
-        if "hello" in result:
-            return result["hello"]
-        return None
+        hello_mongo.get()
 
     def post(self):
         parser = reqparse.RequestParser(bundle_errors=True)
@@ -71,12 +60,11 @@ class MongoHelloWorldApi(Resource):
             required=True
         )
         args = parser.parse_args()
-        db_hello.remove() # upsert
-        db_hello.insert_one({"hello": args["value"]})
+        hello_mongo.post(args["value"])
         return True
 
     def delete(self):
-        return db_hello.remove() # we will just use hello as our key
+        return hello_mongo.delete()  # we will just use hello as our key
 
 
 api.add_resource(

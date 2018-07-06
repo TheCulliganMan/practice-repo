@@ -12,4 +12,4 @@ RUN pip install -r requirements.txt
 COPY . .
 # write the image entrypoint.  This command will run on container start.
 # bind port 0000:8000, 4 workers, 60 second timeout
-CMD ["gunicorn", "application:app", "-b", ":8000", "-w", "4", "--timeout", "60"]
+CMD ["gunicorn", "flask_application:app", "-b", ":8000", "-w", "4", "--timeout", "60"]
