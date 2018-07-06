@@ -11,17 +11,16 @@ class HelloMongo(object):
     def __init__(self):
         pass
 
-    def get(self):
+    def get(self) -> str:
         # we will just use hello as our key
         result = db_hello.find_one()
         if result and "hello" in result:
             return result["hello"]
-        return None
+        return ""
 
-    def post(self, value):
+    def post(self, value) -> None:
         db_hello.remove()  # upsert
         db_hello.insert_one({"hello": value})
-        return True
 
-    def delete(self):
-        return db_hello.remove()
+    def delete(self) -> None:
+        db_hello.remove()

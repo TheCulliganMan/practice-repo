@@ -13,7 +13,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 
-def index(app: App, name=None):
+def index(app: App, name=None) -> str:
     return app.render_template("index.html")
 
 
@@ -25,12 +25,12 @@ hello_redis = HelloRedis()
 hello_mongo = HelloMongo()
 
 
-def mongo_post(data: NoSqlPostValidate):
+def mongo_post(data: NoSqlPostValidate) -> None:
     valueobj = NoSqlPostValidate(data)
     hello_redis.post(valueobj.value)
 
 
-def redis_post(data: NoSqlPostValidate):
+def redis_post(data: NoSqlPostValidate) -> None:
     valueobj = NoSqlPostValidate(data)
     hello_redis.post(valueobj.value)
 

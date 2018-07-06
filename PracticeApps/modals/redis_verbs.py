@@ -10,12 +10,15 @@ class HelloRedis(object):
     def __init__(self):
         pass
 
-    def get(self):
+    def get(self) -> str:
         # we will just use hello as our key
-        return redis.get("hello")
+        resp = redis.get("hello")
+        if not resp:
+            return ""
+        return str(resp)
 
-    def post(self, value):
-        return redis.set("hello", value)
+    def post(self, value) -> None:
+        redis.set("hello", value)
 
-    def delete(self):
-        return redis.delete("hello")  # we will just use hello as our key
+    def delete(self) -> None:
+        redis.delete("hello")  # we will just use hello as our key
