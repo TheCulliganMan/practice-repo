@@ -1,4 +1,5 @@
 apistar
+falcon
 Flask
 flask-restful
 gunicorn
