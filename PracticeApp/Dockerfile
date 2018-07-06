@@ -11,5 +11,5 @@ RUN pip install -r requirements.txt
 # Copy all items (not in .dockerignore) into the folder
 COPY . .
 # write the image entrypoint.  This command will run on container start.
-# bind port 0000:8000, 4 workers, 2 second timeout
-CMD ["gunicorn", "application:app", "-b", ":8000", "-w", "4", "--timeout", "2"]
+# bind port 0000:8000, 4 workers, 60 second timeout
+CMD ["gunicorn", "application:app", "-b", ":8000", "-w", "4", "--timeout", "60"]
