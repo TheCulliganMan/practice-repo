@@ -1,4 +1,7 @@
 import redis 
+import logging
+
+logger = logging.getLogger(__name__)
 
 redis = redis.StrictRedis(
     host='redis',  # host is the container name specified in the compose file
@@ -18,6 +21,7 @@ class HelloRedis(object):
         return str(resp)
 
     def post(self, value) -> str:
+        logger.critical(f'setting {value}')
         redis.set("hello", value)
         return ""
 
