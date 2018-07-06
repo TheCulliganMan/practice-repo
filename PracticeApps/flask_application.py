@@ -43,13 +43,12 @@ api.add_resource(
 
 ### START MONGO API EXAMPLE ###
 
-
 hello_mongo = HelloMongo()
 class MongoHelloWorldApi(Resource):
     """ Mongo Hello World Example """
 
     def get(self):
-        hello_mongo.get()
+        return hello_mongo.get()
 
     def post(self):
         parser = reqparse.RequestParser(bundle_errors=True)
