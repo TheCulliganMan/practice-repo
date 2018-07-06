@@ -42,3 +42,27 @@ Tests should probably be in pytest with coverage enabled.
 
 https://docs.pytest.org/en/latest/
 
+## General Notes
+
+### Redis
+ * in-memory data structure store
+ * used as a database, cache and message broker
+ * various data structures:
+   * strings
+   * hashes
+   * lists
+   * sets
+   * sorted sets with range queries
+   * bitmaps
+   * hyperloglogs
+   * geospatial indexes with radius queries
+ * LRU (least recently used) eviction
+ * Key expiry times
+ * Extremely Fast Single Worker model
+ * best used when you want something like a python dictionary that spans a network.
+
+### MongoDB
+ * Traditional (ACID) NoSQL
+ * Use it when you have large data that needs to get sharded over a cluster 
+ * Has georadius, sharding, and an "Object Store" called GridFS
+ * Gridfs shards into 256 kb chunks and allows for distributed file storage.
