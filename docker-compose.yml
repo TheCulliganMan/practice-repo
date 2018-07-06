@@ -5,7 +5,7 @@ services:
     # always restart, regardless of exit code
     restart: always
     # Specify build folder
-    build: ./PracticeApp
+    build: ./PracticeApps
     # specify an image name if you would like to push it to the registry
     image: theculliganman:flaskpracticeapp
     # Exposes ports externally, we map 8000 of the container port to 93 on the host.
