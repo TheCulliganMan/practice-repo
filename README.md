@@ -85,7 +85,7 @@ docker run -name practiceapp -p 93:8000 -d practiceapp
 * fucking fast. 20x the speed (reqs per second) of flask
 * runs great on pypy!
 
-#### ApiStart
+#### ApiStar
 
 * kinda strange syntax
 * fast, not as fast as falcon but fast.
