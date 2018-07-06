@@ -17,7 +17,8 @@ api = Api(app)
 redis = redis.StrictRedis(
     host='redis',  # host is the container name specified in the compose file
     port=6379,  # port has already been set by default in the redis image
-    db=0)
+    decode_responses=True # we don't want bytes back
+)
 class RedisHelloWorldApi(Resource):
     """ Redis Hello World Example """
     def get(self):
