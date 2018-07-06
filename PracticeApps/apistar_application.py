@@ -1,8 +1,6 @@
 import os
-from apistar import App
-from apistar import Route
-from apistar import types
-from apistar import validators
+
+from apistar import App, Route, types, validators
 
 from modals.mongo_verbs import HelloMongo
 from modals.redis_verbs import HelloRedis
@@ -39,12 +37,18 @@ def redis_post(data: NoSqlPostValidate) -> str:
 
 routes = [
     Route('/', 'GET', index),
-    Route("/api/v1/redis/helloworld/get", method="GET", handler=hello_mongo.get),
-    Route("/api/v1/redis/helloworld/post", method="POST", handler=redis_post),
-    Route("/api/v1/redis/helloworld/delete", method="DELETE", handler=hello_mongo.delete),
-    Route("/api/v1/mongo/helloworld/get", method="GET", handler=hello_mongo.get),
-    Route("/api/v1/mongo/helloworld/post", method="POST", handler=mongo_post),
-    Route("/api/v1/mongo/helloworld/delete", method="DELETE", handler=hello_mongo.delete)
+    Route("/api/v1/redis/helloworld", method="GET",
+          handler=hello_redis.get, name="redis_get"),
+    Route("/api/v1/redis/helloworld", method="POST",
+          handler=redis_post, name="redis_post"),
+    Route("/api/v1/redis/helloworld", method="DELETE",
+          handler=hello_redis.delete, name="redis_delete"),
+    Route("/api/v1/mongo/helloworld", method="GET",
+          handler=hello_mongo.get, name="mongo_get"),
+    Route("/api/v1/mongo/helloworld", method="POST",
+          handler=mongo_post, name="mongo_post"),
+    Route("/api/v1/mongo/helloworld", method="DELETE",
+          handler=hello_mongo.delete, name="mongo_delete")
 ]
 
 app = App(routes=routes, template_dir=TEMPLATE_DIR, static_dir=STATIC_DIR)
