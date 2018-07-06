@@ -39,12 +39,12 @@ def redis_post(data: NoSqlPostValidate) -> str:
 
 routes = [
     Route('/', 'GET', index),
-    Route("/api/v1/redis/helloworld", method="GET", handler=hello_mongo.get),
-    Route("/api/v1/redis/helloworld", method="POST", handler=redis_post),
-    Route("/api/v1/redis/helloworld", method="DELETE", handler=hello_mongo.delete),
-    Route("/api/v1/mongo/helloworld", method="GET", handler=hello_mongo.get),
-    Route("/api/v1/mongo/helloworld", method="POST", handler=mongo_post),
-    Route("/api/v1/mongo/helloworld", method="DELETE", handler=hello_mongo.delete)
+    Route("/api/v1/redis/helloworld/get", method="GET", handler=hello_mongo.get),
+    Route("/api/v1/redis/helloworld/post", method="POST", handler=redis_post),
+    Route("/api/v1/redis/helloworld/delete", method="DELETE", handler=hello_mongo.delete),
+    Route("/api/v1/mongo/helloworld/get", method="GET", handler=hello_mongo.get),
+    Route("/api/v1/mongo/helloworld/post", method="POST", handler=mongo_post),
+    Route("/api/v1/mongo/helloworld/delete", method="DELETE", handler=hello_mongo.delete)
 ]
 
 app = App(routes=routes, template_dir=TEMPLATE_DIR, static_dir=STATIC_DIR)
