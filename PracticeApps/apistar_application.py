@@ -36,7 +36,7 @@ def redis_post(data: NoSqlPostValidate) -> str:
 
 
 routes = [
-    Route('/', 'GET', index),
+    Route('/', method='GET', handler=index, name="index"),
     Route("/api/v1/redis/helloworld", method="GET",
           handler=hello_redis.get, name="redis_get"),
     Route("/api/v1/redis/helloworld", method="POST",
