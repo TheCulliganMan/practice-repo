@@ -24,4 +24,6 @@ services:
     image: redis:latest
   mongod:
     restart: always
-    image: redis:latest
+    expose:
+      - 27017
+    image: mongodb:latest
