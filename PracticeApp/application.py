@@ -75,13 +75,12 @@ class MongoHelloWorldApi(Resource):
 
 
 api.add_resource(
-    RedisHelloWorldApi,  # Restful Class
+    MongoHelloWorldApi,  # Restful Class
     '/api/v1/mongo/helloworld'  # at path
 )
 ### END MONGO API EXAMPLE ###
 
 ### START HTML EXAMPLE ###
-
 @app.route("/", methods=["GET"])
 def index():
     return render_template('index.html')

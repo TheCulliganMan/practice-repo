@@ -16,7 +16,7 @@ Now we want to start the app.
 docker-compose up -d  # d is for daemon
 ```
 
-Now the app should be running with its' copies of mongodb and redis.
+Now the app should be running with its' copies of mongodb and redis. (this  can be shortened to `docker-compose up --build -d`)
 
 It is probably about time to check the logs of the application.  We can do this by typing:
 
