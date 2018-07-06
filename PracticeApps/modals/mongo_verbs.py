@@ -14,7 +14,7 @@ class HelloMongo(object):
     def get(self):
         # we will just use hello as our key
         result = db_hello.find_one()
-        if "hello" in result:
+        if result and "hello" in result:
             return result["hello"]
         return None
 
