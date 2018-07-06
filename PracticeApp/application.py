@@ -57,7 +57,10 @@ class MongoHelloWorldApi(Resource):
     """ Mongo Hello World Example """
 
     def get(self):
-        return db_hello.find_one()  # we will just use hello as our key
+        result = db_hello.find_one() #
+        if "hello" in result:
+            return result["hello"]
+        return None
 
     def post(self):
         parser = reqparse.RequestParser(bundle_errors=True)
@@ -68,6 +71,7 @@ class MongoHelloWorldApi(Resource):
             required=True
         )
         args = parser.parse_args()
+        db_hello.remove() # upsert
         db_hello.insert_one({"hello": args["value"]})
         return True
 
