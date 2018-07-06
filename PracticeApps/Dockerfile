@@ -1,5 +1,5 @@
 # pull from the python 3.7 image (based on debian)
-FROM python:3.7  
+FROM python:3.6.4 
 # Create folder recursive 
 CMD mkdir -p /usr/src/app  
 # Set current working directory to the working dir
