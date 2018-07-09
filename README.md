@@ -82,7 +82,7 @@ docker run -name practiceapp -p 93:8000 -d practiceapp
 
 * You manage everything by hand
 * not as many extensions
-* fucking fast. 20x the speed (reqs per second) of flask
+* fast. 20x the speed (reqs per second) of flask
 * runs great on pypy!
 
 #### ApiStar
