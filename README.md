@@ -1,4 +1,4 @@
-# colin-practice-repo
+# practice-repo
 
 Colin Ryan Colab Flask Docker Compose
 
