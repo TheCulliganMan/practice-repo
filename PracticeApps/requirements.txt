@@ -6,4 +6,5 @@ gunicorn
 pymongo
 redis
 pytest
-whitenoisevibora
+whitenoise
+vibora
