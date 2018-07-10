@@ -1,0 +1,31 @@
+version: '2'
+services:
+  # PROXIES & GATEKEEPERS
+  viboraweb:
+    # always restart, regardless of exit code
+    restart: always
+    # Specify build folder
+    build: ./PracticeApps
+    # specify an image name if you would like to push it to the registry
+    image: theculliganman:flaskpracticeapp
+    # Exposes ports externally, we map 8000 of the container port to 93 on the host.
+    ports:
+      - 93:8000
+    # link other containers by name onto the containers network
+    links:
+      - redis:redis
+      - mongod:mongod
+    # overwrite the default command.
+    command: ["python", "vibora_application.py"]
+  redis:
+    restart: always
+    # expose port internal to the containers network
+    expose:
+      - 6379
+    # use image from existing docker registry
+    image: redis:latest
+  mongod:
+    restart: always
+    expose:
+      - 27017
+    image: mongo:latest
