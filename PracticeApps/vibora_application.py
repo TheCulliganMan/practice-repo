@@ -27,30 +27,30 @@ async def home():
     return Response(INDEX_HTML)
 
 
-@app.route('/api/v1/mongo/helloworld')
+@app.route('/api/v1/mongo/helloworld', methods=["GET", "POST", "DELETE"])
 async def mongo_hello_world(request: Request):
     if request.method == b"GET":
-        return JsonResponse(hello_mongo.get())
+        return Response(hello_mongo.get(), headers={'content-type': 'json'})
     if request.method == b"POST":
         schema = await AddValueSchema.load_json(request)
         hello_mongo.post(schema.value)
-        return JsonResponse("")
+        return JsonResponse({})
     if request.method == b"DELETE":
         hello_mongo.delete()
-        return JsonResponse("")
+        return JsonResponse({})
 
 
 @app.route('/api/v1/redis/helloworld', methods=["GET", "POST", "DELETE"])
 async def redis_hello_world(request: Request):
     if request.method == b"GET":
-        return JsonResponse(hello_redis.get())
+        return Response(hello_redis.get(), headers={'content-type': 'json'})
     if request.method == b"POST":
         schema = await AddValueSchema.load_json(request)
         hello_redis.post(schema.value)
-        return JsonResponse("")
+        return JsonResponse({})
     if request.method == b"DELETE":
         hello_redis.delete()
-        return JsonResponse("")
+        return JsonResponse({})
 
 
 if __name__ == '__main__':
